@@ -46,10 +46,11 @@ app.post("/login", (req, res) => {
     (err, result) => {
       if (err)
         return res.json({ success: false, message: "Erro no login" })
+      const user = result.rows[0]
       if (!user)
         return res.json({ success: false, message: "Email ou senha incorreto" })
       if (user)
-        req.session.user = { id: user.id, email: user.email, logado: true }
+        req.session.user = { id: user.id, email: user.email, logado: true }, console.log("usuario Logado com sucesso " + email + " " + password)
       return res.json({
         success: true,
         message: "usuario ENCONTRADO",
@@ -68,6 +69,7 @@ app.post("/register", (req, res) => {
   db.query("SELECT username, email FROM users WHERE username = $1 OR email = $2", [username, email], (err, result) => {
     if (err)
       return res.json({ success: false, message: "erro ao buscar dados" })
+    const user = result.rows[0]
     if (user && user.email === email)
       return res.json({ success: false, message: "Email ja cadastrato, use outro email" })
     if (user && user.username === username)
@@ -75,7 +77,7 @@ app.post("/register", (req, res) => {
     db.query("INSERT INTO users(username,email,password) VALUES($1,$2,$3)", [req.body.username, req.body.email, req.body.password], (err) => {
       if (err)
         return res.json({ success: false, message: "erro ao cadastrar" })
-      return res.json({ success: true, message: "usuario cadastrado" })
+      return res.json({ success: true, message: "usuario cadastrado" }), console.log("usuario cadastrado com sucesso" + username + " " + email + ' ' + password)
     })
 
   })
