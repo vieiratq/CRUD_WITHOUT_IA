@@ -2,15 +2,57 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="dash.css" />
 </head>
 
 <body>
-    <h1>hello <span id="name">Name</span> seu id é <span id="id">id</span></h1>
-    <a href="/logout">LOGOUT</a>
-<script src="/dash.js"></script>
+    <header>
+        <h1>Dashboard</h1>
+        <a class="logout" href="/logout">Logout</a>
+    </header>
+
+    <main class="container">
+        <section class="cards">
+            <div class="card">
+                Username
+                <span id="username">Loading...</span>
+            </div>
+
+            <div class="card">
+                User ID
+                <span id="userId">Loading...</span>
+            </div>
+
+            <div class="card">
+                Level
+                <span id="level">Loading...</span>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Post a new task</h2>
+
+            <form id="taskForm">
+                <input type="text" id="taskTitle" placeholder="Task title" required />
+
+                <textarea id="taskDescription" placeholder="Task description" rows="4"></textarea>
+
+                <button type="submit">Post Task</button>
+            </form>
+        </section>
+
+        <section class="section">
+            <h2>Posted tasks</h2>
+            <div id="tasksList">
+                <p class="empty">Loading tasks...</p>
+            </div>
+        </section>
+    </main>
+
+    <script src="/dash.js"></script>
 </body>
 
 </html>
