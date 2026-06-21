@@ -7,6 +7,7 @@ const level = document.getElementById("level");
 const userId = document.getElementById("userId");
 const submit = document.getElementById("submit1");
 const taskmsg = document.getElementById("taskmsg");
+let enviando = false
 async function loadUser() {
     const response = await fetch("/api/users");
     try {
@@ -60,22 +61,34 @@ async function createTask() {
     console.log(data)
 
 }
-submit.addEventListener("click",async (event) => {
+submit.addEventListener("click", async (event) => {
     event.preventDefault()
-    if(!taskTitle.value || !taskDesc.value){
-        taskmsg.innerHTML = "preencha todos os campos"
+    if (!taskTitle.value || !taskDesc.value) {
+        taskmsg.innerHTML = "Preencha todos os campos"
         return
     }
-    if(taskTitle.value.length < 3 || taskTitle.value.length > 25){
+    if (taskTitle.value.length < 3 || taskTitle.value.length > 25) {
         taskmsg.innerHTML = "Titulo deve conter entre 3 e 25 caracteres"
         return
     }
-    if(taskDesc.value.length < 3 || taskDesc.value.length > 200){
+    if (taskDesc.value.length < 3 || taskDesc.value.length > 200) {
         taskmsg.innerHTML = "Descricao deve conter entre 3 e 200 caracteres"
         return
     }
-    await createTask()
-    taskTitle.value = ""
-    taskDesc.value = ""
+    if (enviando) return
+    enviando = true
+    submit.innerHTML = '<i class="fa-solid fa-spinner fa-spin-pulse"></i>'
+    submit.disabled = true
+    try {
+        await createTask()
+        taskTitle.value = ""
+        taskDesc.value = ""
+    }
+    finally {
+        enviando = false
+        submit.innerHTML = "Post Task"
+        submit.disabled = false
+    }
+
 })
 loadUser()
