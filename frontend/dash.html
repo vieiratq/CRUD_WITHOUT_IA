@@ -5,13 +5,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard</title>
-    <link rel="stylesheet" href="../public/dash.css" />
+    <link rel="stylesheet" href="/dash.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
 <body>
     <header>
         <h1>Dashboard</h1>
-        <h2>level: <span id="level"> loading...</span></h2>
+        <h2>level: <span id="level"> loading... <i class="fa-solid fa-spinner fa-spin-pulse"></i> </span></h2>
         <a class="logout" href="/logout">Logout</a>
     </header>
 
@@ -19,17 +20,17 @@
         <section class="cards">
             <div class="card">
                 Username
-                <span id="username">Loading...</span>
+                <span id="username">Loading... <i class="fa-solid fa-spinner fa-spin-pulse"></i></span>
             </div>
 
             <div class="card">
                 User ID
-                <span id="userId">Loading...</span>
+                <span id="userId">Loading... <i class="fa-solid fa-spinner fa-spin-pulse"></i></span>
             </div>
 
             <div class="card">
                 Plan
-                <span id="plan">Loading...</span>
+                <span id="plan">Loading... <i class="fa-solid fa-spinner fa-spin-pulse"></i></span>
             </div>
         </section>
 
@@ -52,29 +53,17 @@
             </div>
             <div id="tasksList">
                 <div class="task">
-                    <h3 class="task-title">Task 1</h3>
-                    <p class="task-desc">Description of task 1</p>
+                    <h3 class="task-title">Loading... </h3>
+                    <p class="task-desc">Loading...</p>
                 </div>
-                <div class="task">
-                    <h3 class="task-title">Task 1</h3>
-                    <p class="task-desc">Description of task 1</p>
-                </div>
-                <div class="task">
-                    <h3 class="task-title">Task 1</h3>
-                    <p class="task-desc">Description of task 1</p>
-                </div>
-                <div class="task">
-                    <h3 class="task-title">Task 1</h3>
-                    <p class="task-desc">Description of task 1</p>
-                </div>
-                <div class="task">
-                    <h3 class="task-title">Task 1</h3>
-                    <p class="task-desc">Description of task 1</p>
-                </div>
+              
             </div>
         </section>
     </main>
-
+   <div class="info">
+    <h2>info</h2>
+    <p>Para entrar pro favor se registre</p>
+   </div>
     <script src="/dash.js"></script>
 </body>
 
